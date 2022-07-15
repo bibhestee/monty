@@ -22,6 +22,7 @@ void push(stack_t **stack, unsigned int line_number)
 	}
 	n = atoi(arg);
 	addnode(stack, n);
+	stack_len++;
 }
 
 
@@ -39,7 +40,7 @@ void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 	/* Check if stack is empty */
-	if (*stack == NULL)
+	if (EMPTY)
 	{
 		fprintf(stderr, "L%i: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
@@ -51,6 +52,7 @@ void pop(stack_t **stack, unsigned int line_number)
 		free(*stack);
 		*stack = temp;
 	}
+	stack_len--;
 }
 
 
@@ -69,7 +71,7 @@ void pall(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 
 	/* If stack is not empty */
-	if (*stack != NULL)
+	if (EMPTY)
 	{
 		while (current != NULL)
 		{
@@ -91,7 +93,7 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
 	/* Error if empty */
-	if (*stack == NULL)
+	if (EMPTY)
 	{
 		fprintf(stderr, "L%i: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);

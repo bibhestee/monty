@@ -1,5 +1,7 @@
 #include "monty.h"
 
+int stack_len;
+
 /**
  * main - main function to control all operations
  * @argc - argument counts
@@ -13,10 +15,11 @@ int main(int argc, char** argv)
 	FILE *file;
 	char *buff;
 	char *opcode;
-	stack_t *stack = NULL;
 	size_t n;
-
+	stack_t *stack = NULL;
 	unsigned int line_number = 0;
+
+	stack_len = 0;
 
 	if (argc != 2)
 	{

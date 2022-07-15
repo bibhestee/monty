@@ -33,33 +33,33 @@ int digit(char *arg)
 
 stack_t *addnode(stack_t **stack, unsigned int n)
 {
-        stack_t *temp = *stack;
+	stack_t *temp = *stack;
 
         /* Create a new stack node */
-        stack_t *node = malloc(sizeof(stack_t));
+	stack_t *node = malloc(sizeof(stack_t));
 
         /* Check if memory is allocated successfully */
-        if (node == NULL)
-        {
-                fprintf(stderr, "Error: malloc failed\n");
-                exit(EXIT_FAILURE);
-        }
+	if (node == NULL)
+	{
+		fprintf(stderr, "Error: malloc failed\n");
+		exit(EXIT_FAILURE);
+	}
 
-        /* Initialize the new stack node */
-        node->n = n;
-        node->prev = NULL;
-        node->next = NULL;
+	/* Initialize the new stack node */
+	node->n = n;
+	node->prev = NULL;
+	node->next = NULL;
 
-        if (*stack == NULL) /* if top is empty */
-        {
-                /* Add new stack node to the top */
-                *stack = node;
-        }
-        else
-        {
-                node->next = temp;
-                temp->prev = node;
-                *stack = node;
-        }
-        return (*stack);
+	if (*stack == NULL) /* if top is empty */
+	{
+		/* Add new stack node to the top */
+		*stack = node;
+ 	}
+	else
+	{
+		node->next = temp;
+		temp->prev = node;
+		*stack = node;
+	}
+	return (*stack);
 }

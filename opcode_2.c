@@ -11,7 +11,7 @@ void swap(stack_t **stack, unsigned int line_number)
 {
 	int tmp;
 	stack_t *current = *stack;
-	if (current->next == NULL)
+	if (TOO_SHORT)
 	{
 		fprintf(stderr, "L%i: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -40,7 +40,7 @@ void add(stack_t **stack, unsigned int line_number)
 {
 	int sum;
 	stack_t *current = *stack;
-	if (current->next == NULL)
+	if (TOO_SHORT)
 	{
 		fprintf(stderr, "L%i: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -53,12 +53,13 @@ void add(stack_t **stack, unsigned int line_number)
 		current->n = sum;
 		*stack = current;
 	}
+	stack_len--;
 }
 
 
 /**
  * free_all - frees all the allocated memory
- * @stack - pointer to the top of the stack;
+ * @stack: pointer to the top of the stack;
  * Description: all allocated memories must be freed after usage.
  *
  */

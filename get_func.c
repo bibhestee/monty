@@ -38,7 +38,7 @@ void get_func(char* opcode, stack_t **stack, unsigned int line_number)
 			return;
 		}
 	}
-	fprintf(stderr,"L%i: unknown instruction %s", line_number, opcode);
+	fprintf(stderr, "L%i: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
 
 }
