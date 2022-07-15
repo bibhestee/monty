@@ -17,7 +17,7 @@ void push(stack_t **stack, unsigned int line_number)
 	arg = strtok(NULL, "\n\t\r ");
 	if (arg == NULL || digit(arg))
 	{
-		dprintf(2, "L%i: usage: push integer\n", line_number);
+		fprintf(stderr, "L%i: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	n = atoi(arg);
@@ -41,7 +41,7 @@ void pop(stack_t **stack, unsigned int line_number)
 	/* Check if stack is empty */
 	if (*stack == NULL)
 	{
-		dprintf(2, "L%i: can't pop an empty stack\n", line_number);
+		fprintf(stderr, "L%i: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -93,7 +93,7 @@ void pint(stack_t **stack, unsigned int line_number)
 	/* Error if empty */
 	if (*stack == NULL)
 	{
-		dprintf(2, "L%i: can't pint, stack empty\n", line_number);
+		fprintf(stderr, "L%i: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else

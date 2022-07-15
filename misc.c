@@ -25,8 +25,8 @@ int digit(char *arg)
 
 /**
  * addnode - add new node to a stack or queue
- * @stack: pointee to the top of the stack
- * @n; node data
+ * @stack: pointer to the top of the stack
+ * @n: node data
  *
  * Return: pointer to the stack
  */
@@ -41,7 +41,7 @@ stack_t *addnode(stack_t **stack, unsigned int n)
         /* Check if memory is allocated successfully */
         if (node == NULL)
         {
-                dprintf(2, "Error: malloc failed\n");
+                fprintf(stderr, "Error: malloc failed\n");
                 exit(EXIT_FAILURE);
         }
 

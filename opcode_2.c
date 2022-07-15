@@ -13,7 +13,7 @@ void swap(stack_t **stack, unsigned int line_number)
 	stack_t *current = *stack;
 	if (current->next == NULL)
 	{
-		dprintf(2, "L%i: can't swap, stack too short\n", line_number);
+		fprintf(stderr, "L%i: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
@@ -42,7 +42,7 @@ void add(stack_t **stack, unsigned int line_number)
 	stack_t *current = *stack;
 	if (current->next == NULL)
 	{
-		dprintf(2, "L%i: can't add, stack too short\n", line_number);
+		fprintf(stderr, "L%i: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
