@@ -1,6 +1,13 @@
 #ifndef MONTY_H
 #define MONTY_H
 
+/* -------- Libraries ------------- */
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <ctype.h>
+
+/* -------- Structures ------------ */
 /**
  * struct stack_s - doubly linked list representation of a stack (or queue)
  * @n: integer
@@ -32,10 +39,42 @@ typedef struct instruction_s
 } instruction_t;
 
 
-char *push(stack_t **top, int n);
-char *pop(stack_t **top);
-void pall(stack_t **top);
-void pint(stack_t **top);
-void add(stack_t **top);
-void swap(stack_t **top);
-#endif
+
+
+/* -------------- Misc Functions ------------------ */
+
+/* +++++++ Get opcode command and call the function ++++++ */
+void get_func(char* opcode, stack_t **stack, unsigned int line_number);
+
+/* ++++++++++ Add new node +++++++++ */
+stack_t *addnode(stack_t **top, unsigned int n);
+
+/* +++++++ Check if arg is a digit ++++++++ */
+int digit(char *arg);
+
+/* +++++++++ Frees all memory +++++++++++++ */
+void free_all(stack_t **stack);
+
+/* --------------- OP CODES ---------------------- */
+
+/* ------ Stack Manipulation functions ----------- */
+void push(stack_t **stack, unsigned int line_number);
+void pop(stack_t **stack, unsigned int line_number);
+void pall(stack_t **stack, unsigned int line_number);
+void pint(stack_t **stack, unsigned int line_number);
+void swap(stack_t **stack, unsigned int line_number);
+void nop(stack_t **stack, unsigned int line_number);
+
+/* ------ Arithmetic Operation Functions --------- */
+void add(stack_t **stack, unsigned int line_number);
+void sub(stack_t **stack, unsigned int line_number);
+void mul(stack_t **stack, unsigned int line_number);
+void Div(stack_t **stack, unsigned int line_number);
+void mod(stack_t **stack, unsigned int line_number);
+
+/* ------- String Print And Rotate Operation Functions */
+void pchar(stack_t **stack, unsigned int line_number);
+void pstr(stack_t **stack, unsigned int line_number);
+void rotl(stack_t **stack, unsigned int line_number);
+
+#endif /*---MONTY_H---*/

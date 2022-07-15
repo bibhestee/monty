@@ -1,40 +1,49 @@
 #include "monty.h"
-#include <stdio.h>
-#include <stdlib.h>
 
 /**
+ * main - main function to control all operations
+ * @argc - argument counts
+ * @argv - argument vector
  *
- *
- *
+ * Return: 0 if success
  */
 
 int main(int argc, char** argv)
 {
-	FILE *fp;
-	char *str = malloc(sizeof(char) *10);
-	size_t l = 0;
-	char* s;
+	FILE *file;
+	char *buff;
+	char *opcode;
+	stack_t *stack = NULL;
+	size_t n;
+
+	unsigned int line_number = 0;
 
 	if (argc != 2)
 	{
-		printf("Wrong usage\n");
-		return (-1);
+		dprintf(2, "USAGE: monty file\n");
+		exit(EXIT_FAILURE);
 	}
-	s = argv[1];
 
-	fp = fopen(s, "r");
+	file = fopen(argv[1], "r");
 
-	if (!fp)
+	if (!file)
 	{
-		printf("File not open!\n");
+		dprintf(2, "Error: Can't open file %s\n", argv[1]);
+		exit(EXIT_FAILURE);
 	}
 
-	while (getline(&str, &l, fp) > 0)
+	while (getline(&buff, &n, file) > 0)
 	{
-
-		puts(str);
-		l++;
+		line_number++;
+		opcode = strtok(buff, "\n\t\r ");
+		if (opcode != NULL && opcode[0] != '#')
+		{
+			get_func(opcode, &stack, line_number);
+		}
 	}
+	free_all(&stack);
 
-	fclose(fp);
+	fclose(file);
+
+	return (0);
 }
