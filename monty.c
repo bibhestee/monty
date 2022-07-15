@@ -32,7 +32,7 @@ int main(int argc, char** argv)
 		exit(EXIT_FAILURE);
 	}
 
-	while (getline(&buff, &n, file))
+	while (getline(&buff, &n, file) != -1)
 	{
 		line_number++;
 		opcode = strtok(buff, "\n\t\r ");
