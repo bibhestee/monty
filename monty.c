@@ -17,7 +17,6 @@ int main(int argc, char **argv)
 	stack_t *stack = NULL;
 	unsigned int line_number = 0;
 
-
 	if (argc != 2)
 	{
 		/* Print error if file specified is more than one or no file */
@@ -29,16 +28,13 @@ int main(int argc, char **argv)
 
 	if (!file)
 	{
-		/* If file is not successfully opened */
 		fprintf(stderr, "Error: Can't open file %s\n", argv[1]);
 		exit(EXIT_FAILURE);
 	}
-
 	/*---- While not at the end of file ---*/
 	while (getline(&buff, &n, file) != -1)
 	{
 		line_number++;
-		/*---- Separate line read to multiple strings ---*/
 		opcode = strtok(buff, "\n\t\r ");
 		if (opcode != NULL && opcode[0] != '#')
 		{
@@ -50,8 +46,6 @@ int main(int argc, char **argv)
 	free_all(&stack);
 	/* Free the buffer saving each line */
 	free(buff);
-
 	fclose(file);
-
 	return (0);
 }
