@@ -9,7 +9,7 @@
  * Return: EXIT_FAILURE if unsuccessful
  */
 
-void get_func(char* opcode, stack_t **stack, unsigned int line_number)
+void get_func(char *opcode, stack_t **stack, unsigned int line_number)
 {
 	size_t i;
 
@@ -32,12 +32,14 @@ void get_func(char* opcode, stack_t **stack, unsigned int line_number)
 
 	for (i = 0; ops[i].opcode != NULL; i++)
 	{
+		/* Compare if str matches with opcode instruction */
 		if (strcmp(ops[i].opcode, opcode) == 0)
 		{
 			ops[i].f(stack, line_number);
 			return;
 		}
 	}
+	/*------ Print error if no matches ---------*/
 	fprintf(stderr, "L%i: unknown instruction %s\n", line_number, opcode);
 	exit(EXIT_FAILURE);
 

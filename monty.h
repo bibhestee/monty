@@ -7,10 +7,6 @@
 #include <string.h>
 #include <ctype.h>
 
-extern int stack_len;
-
-#define TOO_SHORT (stack_len < 2)
-#define EMPTY (stack_len < 1)
 
 /* -------- Structures ------------ */
 /**

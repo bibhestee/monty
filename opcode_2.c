@@ -9,15 +9,17 @@
 
 void swap(stack_t **stack, unsigned int line_number)
 {
-	int tmp;
 	stack_t *current = *stack;
-	if (TOO_SHORT)
+	int tmp;
+
+	if (!current || current->next == NULL)
 	{
 		fprintf(stderr, "L%i: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
+		/* Swap the elements of the top and second element */
 		tmp = current->n;
 		current->n = current->next->n;
 		current->next->n = tmp;
@@ -38,22 +40,19 @@ void swap(stack_t **stack, unsigned int line_number)
 
 void add(stack_t **stack, unsigned int line_number)
 {
-	int sum;
 	stack_t *current = *stack;
-	if (TOO_SHORT)
+
+	if (!current || current->next == NULL)
 	{
 		fprintf(stderr, "L%i: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	else
 	{
-		sum = current->n + current->next->n;
-		current = current->next;
+		current->next->n += current->n;
 		free(*stack);
-		current->n = sum;
 		*stack = current;
 	}
-	stack_len--;
 }
 
 
@@ -68,15 +67,13 @@ void free_all(stack_t **stack)
 {
 	stack_t *temp = *stack;
 
-	if (!temp)
+	if (temp)
 	{
-		return;
-	}
-
-	while (!temp)
-	{
-		temp = temp->next;
-		free(*stack);
-		*stack = temp;
+		while (temp == NULL)
+		{
+			temp = temp->next;
+			free(*stack);
+			*stack = temp;
+		}
 	}
 }

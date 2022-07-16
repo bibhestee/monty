@@ -12,7 +12,7 @@ void sub(stack_t **stack, unsigned int line_number)
 	stack_t *top = *stack;
 	int difference;
 
-	if (TOO_SHORT)
+	if (top->next == NULL)
 	{
 		fprintf(stderr, "L%i: can't sub, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
@@ -25,7 +25,7 @@ void sub(stack_t **stack, unsigned int line_number)
 
 
 /**
- * div - divides the top element by second top element
+ * Div - divides the top element by second top element
  * @stack: pointer to the top of the stack
  * @line_number: stores the current line number
  *
@@ -36,11 +36,11 @@ void Div(stack_t **stack, unsigned int line_number)
 	stack_t *top = *stack;
 	int division;
 
-	if (TOO_SHORT)
+	if (top->next == NULL)
 	{
 		fprintf(stderr, "L%i: can't div, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
-        }
+	}
 	if (top->n == 0)
 	{
 		fprintf(stderr, "L%i: division by zero\n", line_number);
@@ -64,14 +64,14 @@ void mul(stack_t **stack, unsigned int line_number)
 	stack_t *top = *stack;
 	int product;
 
-	if (TOO_SHORT)
+	if (top->next == NULL)
 	{
 		fprintf(stderr, "L%i: can't mul, stack too short\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 
 	product = top->n * top->next->n;
- 	pop(stack, line_number);
+	pop(stack, line_number);
 	(*stack)->n = product;
 }
 
@@ -89,7 +89,7 @@ void mod(stack_t **stack, unsigned int line_number)
 	stack_t *top = *stack;
 	int rem;
 
-	if (TOO_SHORT)
+	if (top->next == NULL)
 	{
 		fprintf(stderr, "L%i: can't mod, stack too short\n", line_number);
 		exit(EXIT_FAILURE);

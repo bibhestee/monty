@@ -45,7 +45,11 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	while (top != NULL)
 	{
-		putchar(top->n);
+		if (top->n > 127 || !(top->n))
+		{
+			/* Prints only characters */
+			putchar(top->n);
+		}
 		top = top->next;
 	}
 	putchar('\n');
@@ -63,7 +67,7 @@ void pstr(stack_t **stack, unsigned int line_number)
 void rotl(stack_t **stack, unsigned int line_number)
 {
 	stack_t *top = *stack;
-	stack_t *new_top = top->next;
+	stack_t *new_top = top->next; /* Second element */
 	stack_t *temp = *stack;
 	(void)line_number;
 
@@ -71,10 +75,11 @@ void rotl(stack_t **stack, unsigned int line_number)
 	{
 		top = top->next;
 	}
+	/* Make the previous top to be last one */
 	top->next = temp;
 	temp->prev = top;
 	temp->next = NULL;
-	free(*stack);
+	/* Set second element as the new top element */
 	*stack = new_top;
 }
 

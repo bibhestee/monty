@@ -11,18 +11,19 @@
 
 void push(stack_t **stack, unsigned int line_number)
 {
-	char* arg;
+	char *arg;
 	int n;
 
+	/*---- Get second string from buffer ---*/
 	arg = strtok(NULL, "\n\t\r ");
 	if (arg == NULL || digit(arg))
 	{
+		/*---- Print error if argument is not an integer ----*/
 		fprintf(stderr, "L%i: usage: push integer\n", line_number);
 		exit(EXIT_FAILURE);
 	}
 	n = atoi(arg);
 	addnode(stack, n);
-	stack_len++;
 }
 
 
@@ -40,7 +41,7 @@ void pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *temp = *stack;
 	/* Check if stack is empty */
-	if (EMPTY)
+	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%i: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
@@ -52,13 +53,12 @@ void pop(stack_t **stack, unsigned int line_number)
 		free(*stack);
 		*stack = temp;
 	}
-	stack_len--;
 }
 
 
 /**
  * pall - prints all the values on the stack,
-starting from the top of the stack.
+ * starting from the top of the stack.
  * @stack: pointer to the top of the stack
  * @line_number: current line number
  * Description: prints all values followed by a new line
@@ -71,7 +71,7 @@ void pall(stack_t **stack, unsigned int line_number)
 	(void)line_number;
 
 	/* If stack is not empty */
-	if (EMPTY)
+	if (*stack != NULL)
 	{
 		while (current != NULL)
 		{
@@ -84,7 +84,7 @@ void pall(stack_t **stack, unsigned int line_number)
 
 /**
  * pint - prints the value at the top of the stack,
- followed by a new line
+ * followed by a new line
  * @stack: pointer to the top of the stack
  * @line_number: current line number
  */
@@ -93,7 +93,7 @@ void pint(stack_t **stack, unsigned int line_number)
 {
 	stack_t *current = *stack;
 	/* Error if empty */
-	if (EMPTY)
+	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%i: can't pint, stack empty\n", line_number);
 		exit(EXIT_FAILURE);
@@ -107,7 +107,7 @@ void pint(stack_t **stack, unsigned int line_number)
 
 /**
  * nop - do nothing when called
- * @stack - pointer to the top of the stack
+ * @stack: pointer to the top of the stack
  * @line_number: current line number
  *
  */
