@@ -37,6 +37,7 @@ void pchar(stack_t **stack, unsigned int line_number)
 
 void pstr(stack_t **stack, unsigned int line_number)
 {
+	int c;
 	stack_t *top = *stack;
 	(void)line_number;
 
@@ -45,10 +46,11 @@ void pstr(stack_t **stack, unsigned int line_number)
 
 	while (top != NULL)
 	{
-		if (top->n > 127 || !(top->n))
+		c = top->n;
+		if ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z'))
 		{
 			/* Prints only characters */
-			putchar(top->n);
+			putchar(c);
 		}
 		top = top->next;
 	}
