@@ -4,7 +4,7 @@ Welcome to the Monty Bytecode Interpreter. This interpreter was built in the C l
 Our interpreter can be run as either a stack (LIFO) or queue (FIFO). Mode can be switched mid-script. The interpreter can handle a variety of Monty opcodes, including printing, mathematical operations, and more - all handled opcodes are listed below.
 
 ## Getting Started
- * [Ubuntu 14.04 LTS](releases.ubuntu.com) - Operating system reqd.
+ * [Ubuntu 14.04 LTS](releases.ubuntu.com) - Operating system used.
  * [GCC 4.8.4](https://gcc.gnu.org/gcc-4.8/) - Compiler used
 
 ## Prerequisites
@@ -78,11 +78,7 @@ Run the interpreter on a file:
 
 * rotr
   * Rotates the bottom element of the stack/queue to the top.
-* stack
-  * Switches a queue to stack mode.
-* queue
-  * Switches a stack to queue mode.
-
+ 
 ▶️ Opcodes preceeded by a # are treated as comments and the corresponding line is ignored.
 
 ▶️ Lines can be empty and can contain any number of spaces before or after an opcode and its argument (only the first opcode and/or argument is taken into account).
