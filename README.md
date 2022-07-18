@@ -158,27 +158,8 @@ $ git clone https://github.com/bibhestee/monty.git
 
 $ cd Betty; ./install.sh
 ```
-## Version
- * 0.1.0
 
 ## Authors
 * Abdulbasit Abdullahi - 
  [@bibhestee](https://github.com/bibhestee)
 * Chinazor Akah -  [@Jenny3094](https://github.com/Jenny3094)
-
-## License
- This project is licensed under the MIT License - see the [LICENSE.md](https://choosealicense.com/licenses/mit/) file for details
-
-## Acknowledgments
-
-* Holberton School (providing guidance)
-* Stack Overflow (help on various memory errors (not leaks))
-
-
-## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
-
-## License
-[MIT](https://choosealicense.com/licenses/mit/)
